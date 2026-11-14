@@ -22,6 +22,7 @@ Practice project on the Kaggle [House Prices: Advanced Regression Techniques](ht
 | Categorical blanks filled with `'None'`, single split | $17,053 |
 | 5-fold CV, most-frequent fill | $17,672 |
 | 5-fold CV, `'None'` fill | $17,691 |
+| 5-fold CV, XGBoost (500 trees, lr 0.05) | $16,584 |
 
 ## The experiment
 
@@ -35,12 +36,11 @@ On a single split MAE dropped by ~$120 (0.7%). Under 5-fold CV the difference di
 - `train_test_split` returns pieces by position, so the unpacking order matters.
 - Restoring the index after sklearn transformers is necessary for `pd.concat` to align rows correctly.
 - A single-split win is not evidence; cross-validation is.
+- XGBoost improved CV MAE by about 6% over the random forest, a difference large enough to be real, unlike the imputation change
 
-## Next
 
-- Add `XGBRegressor` and compare it to the random forest using the same 5-fold CV.
-- Feature engineering (total square footage, house age).
-- Fit on `log(SalePrice)` to match the competition's metric.
+
+
 
 ## Environment
 
